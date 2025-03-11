@@ -63,11 +63,9 @@ const HttpManager = {
   // 返回所有评论
   getAllComment: (type, id) => {
     let url = "";
-    if (type === 1) {
-      url = `comment/songList/detail?songListId=${id}`;
-    } else if (type === 0) {
-      url = `comment/song/detail?songId=${id}`;
-    }
+    url = type
+    ?`comment/songList/detail?songListId=${id}`
+    :`comment/song/detail?songId=${id}`
     return get(url);
   },
 

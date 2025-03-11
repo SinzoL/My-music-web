@@ -12,7 +12,7 @@ export default {
 
     /** 音乐播放信息 */
     isPlay: false, // 播放状态
-    playBtnIcon: Icon.BOFANG, // 播放状态的图标
+    playBtnIcon: Icon.ZANTING, // 播放状态的图标
     volume: 0, // 音量
     duration: 0, // 音乐时长
     curTime: 0, // 当前音乐的播放位置

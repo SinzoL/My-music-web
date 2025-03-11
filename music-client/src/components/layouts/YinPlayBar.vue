@@ -140,7 +140,7 @@ export default defineComponent({
       startTime: "00:00",
       endTime: "00:00",
       nowTime: 0, // 进度条的位置
-      toggle: true,
+      toggle: false,
       volume: 50,
       playState: Icon.XUNHUAN,
       playStateList: [Icon.XUNHUAN, Icon.LUANXU],
