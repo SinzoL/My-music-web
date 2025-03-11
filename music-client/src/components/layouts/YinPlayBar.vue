@@ -103,11 +103,15 @@ export default defineComponent({
       isCollection.value = ((await HttpManager.isCollection({userId, type, songId})) as ResponseBody).data;
     }
 
+    const COLLECTION_TYPE = {
+      SONG: '0',
+      PLAYLIST: '1',
+    };
     async function changeCollection() {
       if (!checkStatus()) return;
 
       const userId = userIdVO.value;
-      const type = '0'; //这里要看看 不能直接写死
+      const type = COLLECTION_TYPE.SONG; //这里要看看 不能直接写死
       const songId = songIdVO.value;
 
       const result = isCollection.value
@@ -140,8 +144,8 @@ export default defineComponent({
       startTime: "00:00",
       endTime: "00:00",
       nowTime: 0, // 进度条的位置
-      toggle: false,
-      volume: 50,
+      toggle: true, //控制底部播放控件的位置
+      volume: 51,
       playState: Icon.XUNHUAN,
       playStateList: [Icon.XUNHUAN, Icon.LUANXU],
       playStateIndex: 0,
@@ -181,8 +185,8 @@ export default defineComponent({
     isPlay(value) {
       this.$store.commit("setPlayBtnIcon", value ? Icon.ZANTING : Icon.BOFANG);
     },
-    volume() {
-      this.$store.commit("setVolume", this.volume / 100);
+    volume(newVolume) { //这种方式可以自动执行
+      this.$store.commit("setVolume", newVolume / 100);
     },
     // 播放时间的开始和结束
     curTime() {
@@ -212,46 +216,30 @@ export default defineComponent({
       this.playState = this.playStateList[this.playStateIndex];
     },
     // 上一首
-    prev() {
+    getNextIndex() {
       if (this.playState === Icon.LUANXU) {
         let playIndex = Math.floor(Math.random() * this.currentPlayList.length);
-
-        alert(playIndex);
-        playIndex = playIndex === this.currentPlayIndex ? playIndex + 1 : playIndex;
-        this.$store.commit("setCurrentPlayIndex", playIndex);
-        this.toPlay(this.currentPlayList[playIndex].url);
-      } else if (this.currentPlayIndex !== -1 && this.currentPlayList.length > 1) {
-        if (this.currentPlayIndex > 0) {
-          this.$store.commit("setCurrentPlayIndex", this.currentPlayIndex - 1);
-          this.toPlay(this.currentPlayList[this.currentPlayIndex].url);
-        } else {
-          this.$store.commit("setCurrentPlayIndex", this.currentPlayList.length - 1);
-          this.toPlay(this.currentPlayList[this.currentPlayIndex].url);
+        while (playIndex === this.currentPlayIndex) {
+          playIndex = Math.floor(Math.random() * this.currentPlayList.length);
         }
+        return playIndex;
+      } else {
+        return (this.currentPlayIndex + 1) % this.currentPlayList.length;
       }
     },
-    // 下一首
     next() {
-      if (this.playState === Icon.LUANXU) {
-        let playIndex = Math.floor(Math.random() * this.currentPlayList.length);
-        playIndex = playIndex === this.currentPlayIndex ? playIndex + 1 : playIndex;
-        this.$store.commit("setCurrentPlayIndex", playIndex);
-        this.toPlay(this.currentPlayList[playIndex].url);
-      } else if (this.currentPlayIndex !== -1 && this.currentPlayList.length > 1) {
-        if (this.currentPlayIndex < this.currentPlayList.length - 1) {
-          alert(this.currentPlayIndex.length);
-          this.$store.commit("setCurrentPlayIndex", this.currentPlayIndex + 1);
-          this.toPlay(this.currentPlayList[this.currentPlayIndex].url);
-        } else {
-          this.$store.commit("setCurrentPlayIndex", 0);
-          this.toPlay(this.currentPlayList[0].url);
-        }
-      }
-
+      const nextIndex = this.getNextIndex();
+      this.$store.commit("setCurrentPlayIndex", nextIndex);
+      this.toPlay(this.currentPlayList[nextIndex].url);
+    },
+    prev() {
+      const prevIndex = (this.currentPlayIndex - 1 + this.currentPlayList.length) % this.currentPlayList.length;
+      this.$store.commit("setCurrentPlayIndex", prevIndex);
+      this.toPlay(this.currentPlayList[prevIndex].url);
     },
     // 选中播放
     toPlay(url) {
-      if (url && url !== this.songUrl) {
+      if (url) { //移除不必要的判断，url相同也能够触发
         //alert(url);
         const song = this.currentPlayList[this.currentPlayIndex];
         this.playMusic({
