@@ -45,8 +45,8 @@ const { checkStatus } = mixin();
 
 
 const props = defineProps({
-  playId: Number || String, // 歌曲ID 或 歌单ID
-  type: Number, // 歌单 1 / 歌曲 0
+  playId: [Number, String], // 歌曲ID 或 歌单ID
+  type: Number, // 歌单 1 / 歌曲 0});
 });
 
 const { playId, type } = toRefs(props);
