@@ -28,7 +28,7 @@
 
 <script lang="ts" setup>
 
-import { defineProps, getCurrentInstance, ref, toRefs, computed, watch, reactive, onMounted } from "vue";
+import { getCurrentInstance, ref, toRefs, computed, watch, reactive, onMounted } from "vue";
 import { useStore } from "vuex";
 import { Delete } from "@element-plus/icons-vue";
 

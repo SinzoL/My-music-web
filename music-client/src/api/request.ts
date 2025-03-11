@@ -14,36 +14,45 @@ axios.interceptors.response.use(
     (response) => {
         // 如果返回的状态码为200，说明接口请求成功，可以正常拿到数据
         // 否则的话抛出错误
-        return response.status >= 200 && response.status < 300
-            ? Promise.resolve(response)
-            : Promise.reject(response);
+        if (response.status === 200) {
+            return Promise.resolve(response);
+        } else {
+            return Promise.reject(response);
+        }
     },
-    // 服务器状态码不是2XX的的情况
+    // 服务器状态码不是2开头的的情况
     (error) => {
-        if (!error.response) {
-            console.log("網絡錯誤或者超時");
-            return Promise.reject({message: "網絡錯誤或者超時"});
+        if (error.response.status) {
+            switch (error.response.status) {
+                // 401: 未登录
+                case 401:
+                    router.replace({
+                        path: "/",
+                        query: {
+                            // redirect: router.currentRoute.fullPath
+                        },
+                    });
+                    break;
+                case 403:
+                    // console.log('管理员权限已修改请重新登录')
+                    // 跳转登录页面，并将要浏览的页面fullPath传过去，登录成功后跳转需要访问的页面
+                    setTimeout(() => {
+                        router.replace({
+                            path: "/",
+                            query: {
+                                // redirect: router.currentRoute.fullPath
+                            },
+                        });
+                    }, 1000);
+                    break;
+
+                // 404请求不存在
+                case 404:
+                    // console.log('请求页面飞到火星去了')
+                    break;
+            }
+            return Promise.reject(error.response);
         }
-        switch (error.response.status) {
-            // 401: 未登录
-            case 401:
-                router.replace({path: "/"});
-                break;
-            case 403:
-                // console.log('管理员权限已修改请重新登录')
-                // 跳转登录页面，并将要浏览的页面fullPath传过去，登录成功后跳转需要访问的页面
-                setTimeout(() => {
-                    router.replace({path: "/"});
-                }, 1000);
-                break;
-            case 404:
-                console.log('請求頁面不存在');
-                break;
-            case 500:
-                console.log("服務器錯誤");
-                break;
-        }
-        return Promise.reject(error.response);
     }
 );
 
@@ -57,9 +66,9 @@ export function getBaseURL() {
  * @param data
  * @returns {Promise}
  */
-export function get(url, params = {}) {
+export function get(url, params?: object) {
     return new Promise((resolve, reject) => {
-        axios.get(url, {params}).then(
+        axios.get(url, params).then(
             (response) => resolve(response.data),
             (error) => reject(error)
         );
@@ -87,9 +96,9 @@ export function post(url, data = {}) {
  * @param data
  * @returns {Promise}
  */
-export function deletes(url, params = {}) {
+export function deletes(url, data = {}) {
     return new Promise((resolve, reject) => {
-        axios.delete(url, {params}).then(
+        axios.delete(url, data).then(
             (response) => resolve(response.data),
             (error) => reject(error)
         );

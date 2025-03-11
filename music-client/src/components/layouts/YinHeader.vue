@@ -166,7 +166,7 @@ export default defineComponent({
 .header-search {
   margin: 0 20px;
   width: 100%;
-  &::v-deep input {
+  &:deep(input) {
     text-indent: 5px;
     max-width: $header-search-max-width;
     min-width: $header-search-min-width;
