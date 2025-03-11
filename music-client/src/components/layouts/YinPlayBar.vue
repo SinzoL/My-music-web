@@ -252,7 +252,8 @@ export default defineComponent({
           currentSongList: this.currentPlayList,
         });
       }
-      this.$store.commit("setIsPlay", true);
+      //this.togglePlay();
+      this.$store.commit("setIsPlay", !this.isPlay);
     },
     goPlayerPage() {
       this.routerManager(RouterName.Lyric, {path: `${RouterName.Lyric}/${this.songId}`});

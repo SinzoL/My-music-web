@@ -55,6 +55,7 @@ export default defineComponent({
 
     // 开始 / 暂停
     function togglePlay() {
+      if(isPlay.value) alert("要播放了啊");
       isPlay.value ? divRef.value.play() : divRef.value.pause();
     }
     // 获取歌曲链接后准备播放
