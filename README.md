@@ -1,6 +1,6 @@
 ## 项目说明
 
-這個項目是基於**Yin-Hongwei**的項目的二次開發，致敬原創！
+這個項目是基於開發者**Yin-Hongwei**的項目的二次開發，致敬原創！
 <a href="https://github.com/Yin-Hongwei/music-website" target="_blank">原倉庫</a>
 
 
@@ -56,6 +56,11 @@ minio: 下载本地最新 或者 [docker完美启动minio | 想飞跃的鱼 (nan
 
 ## License
 
-This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license. The project cannot be used for commercial purposes.
+This project is based on the original work by Yin-Hongwei and is licensed under the  
+Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license.
 
-Copyright (c) 2018 Yin-Hongwei 
+Original Copyright (c) 2018 Yin-Hongwei  
+Modifications and additional development by SinzoL (c) 2025
+
+This project cannot be used for commercial purposes.  
+For more details, see: https://creativecommons.org/licenses/by-nc/4.0/
