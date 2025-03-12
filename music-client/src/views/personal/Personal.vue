@@ -59,11 +59,16 @@ export default defineComponent({
     }
     async function getUserInfo(id) {
       const result = (await HttpManager.getUserOfId(id)) as ResponseBody;
-      personalInfo.username = result.data[0].username;
-      personalInfo.userSex = result.data[0].sex;
-      personalInfo.birth = result.data[0].birth;
-      personalInfo.introduction = result.data[0].introduction;
-      personalInfo.location = result.data[0].location;
+      console.log(result);
+      if(result && result.data && result.data.length > 0) {
+        personalInfo.username = result.data[0].username;
+        personalInfo.userSex = result.data[0].sex;
+        personalInfo.birth = result.data[0].birth;
+        personalInfo.introduction = result.data[0].introduction;
+        personalInfo.location = result.data[0].location;
+      }else {
+        console.error("用户信息有问题");
+      }
     }
     // 获取收藏的歌曲
     async function getCollection(userId) {
@@ -76,7 +81,6 @@ export default defineComponent({
           console.error(`歌曲${item}异常`);
           continue;
         }
-
         const result = (await HttpManager.getSongOfId(item.songId)) as ResponseBody;
         collectSongList.value.push(result.data[0]);
       }
