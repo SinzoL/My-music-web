@@ -52,7 +52,7 @@ public class ConsumerServiceImpl extends ServiceImpl<ConsumerMapper, Consumer>
         if ("".equals(consumer.getEmail())) {
             consumer.setEmail(null);
         }
-        consumer.setAvatar("img/avatarImages/user.jpg");
+        consumer.setAvatar("/img/avatarImages/user.jpg");
         try {
             QueryWrapper<Consumer> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("email",consumer.getEmail());
