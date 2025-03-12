@@ -147,8 +147,8 @@ public class ConsumerController {
      * 更新用户头像
      */
     @PostMapping("/user/avatar/update")
-    public R updateUserPic(@RequestParam("file") MultipartFile avatorFile, @RequestParam("id") int id) {
-        return consumerService.updateUserAvator(avatorFile, id);
+    public R updateUserPic(@RequestParam("file") MultipartFile avatarFile, @RequestParam("id") int id) {
+        return consumerService.updateUserAvatar(avatarFile, id);
     }
 
 }

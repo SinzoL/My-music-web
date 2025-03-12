@@ -10,7 +10,7 @@
       <el-table-column label="ID" prop="id" width="50" align="center"></el-table-column>
       <el-table-column label="用户头像" width="102" align="center">
         <template v-slot="scope">
-          <img :src="attachImageUrl(scope.row.avator)" style="width: 80px" />
+          <img :src="attachImageUrl(scope.row.avatar)" style="width: 80px" />
         </template>
       </el-table-column>
       <el-table-column label="用户名" prop="username" width="80" align="center"></el-table-column>
@@ -39,10 +39,10 @@
         </template>
       </el-table-column>
       <el-table-column label="修改" width="90" align="center">
-        
+
     <template v-slot="scope">
       <el-upload
-        :action="'http://localhost:8888/user/avatar/update?id=' + scope.row.id" 
+        :action="'http://localhost:8888/user/avatar/update?id=' + scope.row.id"
         :show-file-list="false"
         :on-success="handleAvatarSuccess"
         :before-upload="beforeAvatarUpload">
@@ -50,7 +50,7 @@
       </el-upload>
    </template>
 
-        
+
       </el-table-column>
     </el-table>
     <el-pagination

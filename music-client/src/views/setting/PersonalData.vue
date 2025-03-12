@@ -70,7 +70,7 @@ export default defineComponent({
       registerForm.birth = result.data[0].birth;
       registerForm.introduction = result.data[0].introduction;
       registerForm.location = result.data[0].location;
-      registerForm.userPic = result.data[0].avator;
+      registerForm.userPic = result.data[0].avatar;
     }
 
     async function saveMsg() {

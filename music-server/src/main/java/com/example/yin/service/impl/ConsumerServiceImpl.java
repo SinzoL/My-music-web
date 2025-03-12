@@ -52,7 +52,7 @@ public class ConsumerServiceImpl extends ServiceImpl<ConsumerMapper, Consumer>
         if ("".equals(consumer.getEmail())) {
             consumer.setEmail(null);
         }
-        consumer.setAvator("img/avatorImages/user.jpg");
+        consumer.setAvatar("img/avatarImages/user.jpg");
         try {
             QueryWrapper<Consumer> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("email",consumer.getEmail());
@@ -121,13 +121,13 @@ public class ConsumerServiceImpl extends ServiceImpl<ConsumerMapper, Consumer>
 
 
     @Override
-    public R updateUserAvator(MultipartFile avatorFile, int id) {
-        String fileName = avatorFile.getOriginalFilename();
-        String imgPath = "/img/avatorImages/" + fileName;
+    public R updateUserAvatar(MultipartFile avatarFile, int id) {
+        String fileName = avatarFile.getOriginalFilename();
+        String imgPath = "/img/avatarImages/" + fileName;
         Consumer consumer = new Consumer();
         consumer.setId(id);
-        consumer.setAvator(imgPath);
-        String s = MinioUploadController.uploadAtorImgFile(avatorFile);
+        consumer.setAvatar(imgPath);
+        String s = MinioUploadController.uploadActorImgFile(avatarFile);
         if (s.equals("File uploaded successfully!")&&consumerMapper.updateById(consumer) > 0) {
             return R.success("上传成功", imgPath);
         } else {

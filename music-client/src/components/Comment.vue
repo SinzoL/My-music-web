@@ -9,7 +9,7 @@
   </div>
   <ul class="popular">
     <li v-for="(item, index) in commentList" :key="index">
-      <el-image class="popular-img" fit="contain" :src="attachImageUrl(item.avator)" />
+      <el-image class="popular-img" fit="contain" :src="attachImageUrl(item.avatar)" />
       <div class="popular-msg">
         <ul>
           <li class="name">{{ item.username }}</li>
@@ -75,7 +75,7 @@ async function getComment(id) {
     for (let index = 0; index < commentList.value.length; index++) {
       // 获取评论用户的昵称和头像
       const resultUser = (await HttpManager.getUserOfId(commentList.value[index].userId)) as ResponseBody;
-      commentList.value[index].avator = resultUser.data[0].avator;
+      commentList.value[index].avatar = resultUser.data[0].avatar;
       commentList.value[index].username = resultUser.data[0].username;
     }
   } catch (error) {

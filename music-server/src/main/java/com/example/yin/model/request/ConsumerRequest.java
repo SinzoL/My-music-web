@@ -31,7 +31,7 @@ public class ConsumerRequest {
 
     private String location;
 
-    private String avator;
+    private String avatar;
 
     private Date createTime;
 }

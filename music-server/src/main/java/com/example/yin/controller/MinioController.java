@@ -97,13 +97,13 @@ public class MinioController {
         return new ResponseEntity<>(bytes, headers, HttpStatus.OK);
     }
     //获取头像
-    ///img/avatorImages/
-    @GetMapping("/img/avatorImages/{fileName:.+}")
+    ///img/avatarImages/
+    @GetMapping("/img/avatarImages/{fileName:.+}")
     public ResponseEntity<byte[]> getImage3(@PathVariable String fileName) throws Exception {
         InputStream stream = minioClient.getObject(
                 GetObjectArgs.builder()
                         .bucket(bucketName)
-                        .object("img/avatorImages/"+fileName)
+                        .object("img/avatarImages/"+fileName)
                         .build()
         );
 

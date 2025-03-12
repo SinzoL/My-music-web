@@ -14,7 +14,7 @@ public interface SongListService extends IService<SongList> {
 
     R updateSongListMsg(SongListRequest updateSongListRequest);
 
-    R updateSongListImg(MultipartFile avatorFile, int id);
+    R updateSongListImg(MultipartFile avatarFile, int id);
 
     R deleteSongList(Integer id);
 

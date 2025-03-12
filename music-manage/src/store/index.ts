@@ -2,7 +2,7 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    userPic: "/img/avatorImages/user.jpg",
+    userPic: "/img/avatarImages/user.jpg",
     isPlay: false,
     url: '',
     id: '',

@@ -14,7 +14,7 @@ public interface ConsumerService extends IService<Consumer> {
 
     R updateUserMsg(ConsumerRequest updateRequest);
 
-    R updateUserAvator(MultipartFile avatorFile, int id);
+    R updateUserAvatar(MultipartFile avatarFile, int id);
 
     R updatePassword(ConsumerRequest updatePasswordRequest);
 

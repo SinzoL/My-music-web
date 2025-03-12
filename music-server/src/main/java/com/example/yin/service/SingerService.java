@@ -12,7 +12,7 @@ public interface SingerService extends IService<Singer> {
 
     R updateSingerMsg(SingerRequest updateSingerRequest);
 
-    R updateSingerPic(MultipartFile avatorFile, int id);
+    R updateSingerPic(MultipartFile avatarFile, int id);
 
     R deleteSinger(Integer id);
 

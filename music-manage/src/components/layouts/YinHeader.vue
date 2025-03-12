@@ -7,7 +7,7 @@
     <div class="logo">{{ nusicName }}</div>
     <div class="header-right">
       <div class="header-user-con">
-        <div class="user-avator">
+        <div class="user-avatar">
           <img :src="attachImageUrl(userPic)" />
         </div>
         <el-dropdown class="user-name" trigger="click" @command="handleCommand">
@@ -117,7 +117,7 @@ export default defineComponent({
   margin-left: 10px;
 }
 
-.user-avator img {
+.user-avatar img {
   display: block;
   width: 40px;
   height: 40px;

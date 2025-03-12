@@ -11,12 +11,12 @@
     <result column="birth" property="birth" jdbcType="TIMESTAMP" />
     <result column="introduction" property="introduction" jdbcType="VARCHAR" />
     <result column="location" property="location" jdbcType="VARCHAR" />
-    <result column="avator" property="avator" jdbcType="VARCHAR" />
+    <result column="avatar" property="avatar" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, username, password, sex, phone_num, email, birth, introduction, location, avator, create_time, update_time
+    id, username, password, sex, phone_num, email, birth, introduction, location, avatar, create_time, update_time
   </sql>
 
 </mapper>

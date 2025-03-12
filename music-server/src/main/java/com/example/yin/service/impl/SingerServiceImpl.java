@@ -34,9 +34,9 @@ public class SingerServiceImpl extends ServiceImpl<SingerMapper, Singer> impleme
     }
 
     @Override
-    public R updateSingerPic(MultipartFile avatorFile, int id) {
-        String fileName =  avatorFile.getOriginalFilename();
-        MinioUploadController.uploadImgFile(avatorFile);
+    public R updateSingerPic(MultipartFile avatarFile, int id) {
+        String fileName =  avatarFile.getOriginalFilename();
+        MinioUploadController.uploadImgFile(avatarFile);
         String imgPath = "/user01/singer/img/" + fileName;
         Singer singer = new Singer();
         singer.setId(id);
@@ -66,7 +66,7 @@ public class SingerServiceImpl extends ServiceImpl<SingerMapper, Singer> impleme
     public R addSinger(SingerRequest addSingerRequest) {
         Singer singer = new Singer();
         BeanUtils.copyProperties(addSingerRequest, singer);
-        String pic = "/img/avatorImages/user.jpg";
+        String pic = "/img/avatarImages/user.jpg";
         singer.setPic(pic);
         if (singerMapper.insert(singer) > 0) {
             return R.success("添加成功");

@@ -54,8 +54,8 @@ public class SongListController {
 
     // 更新歌单图片
     @PostMapping("/songList/img/update")
-    public R updateSongListPic(@RequestParam("file") MultipartFile avatorFile, @RequestParam("id") int id) {
+    public R updateSongListPic(@RequestParam("file") MultipartFile avatarFile, @RequestParam("id") int id) {
 
-        return songListService.updateSongListImg(avatorFile,id);
+        return songListService.updateSongListImg(avatarFile,id);
     }
 }
