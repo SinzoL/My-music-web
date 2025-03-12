@@ -15,7 +15,7 @@
         </div>
         <span>{{ rank * 2 }}</span>
         <div>
-          <h3>{{ assistText }} {{ score * 2 }}</h3>
+          <h3>{{ assistText }} {{ score * 2 || 0 }}</h3>
           <el-rate allow-half v-model="score" :disabled="disabledRank" @click="pushValue()"></el-rate>
         </div>
       </div>
@@ -73,7 +73,7 @@ export default defineComponent({
     }
     async function getUserRank(userId, songListId) {
       const result = (await HttpManager.getUserRank(userId, songListId)) as ResponseBody;
-      nowScore.value = result.data / 2;
+      nowScore.value = result.data? result.data / 2: 0;
       disabledRank.value = true;
       assistText.value = "已评价";
     }

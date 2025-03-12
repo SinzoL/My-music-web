@@ -16,7 +16,8 @@
             name: item.name,
             lyric: item.lyric,
             currentSongList: currentPlayList,
-          })">
+          });
+          this.$store.commit('setIsPlay', !this.isPlay); alert('in list')">
           {{ getSongTitle(item.name) }}
         </li>
       </ul>
