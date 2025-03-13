@@ -1,5 +1,5 @@
 <template>
-  <yin-login-logo></yin-login-logo>
+  <Background>
   <div class="sign">
     <div class="sign-head">
       <span>帐号登录</span>
@@ -20,18 +20,19 @@
       </el-form-item>
     </el-form>
   </div>
+  </Background>
 </template>
 
 <script lang="ts">
 import { defineComponent, reactive, getCurrentInstance } from "vue";
 import mixin from "@/mixins/mixin";
-import YinLoginLogo from "@/components/layouts/YinLoginLogo.vue";
+import Background  from "@/components/layouts/Background.vue";
 import { HttpManager } from "@/api";
 import { NavName, RouterName, SignInRules } from "@/enums";
 
 export default defineComponent({
   components: {
-    YinLoginLogo,
+    Background,
   },
   setup() {
     const { proxy } = getCurrentInstance();

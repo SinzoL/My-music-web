@@ -152,7 +152,7 @@ export default defineComponent({
     const currentPage = ref(1); // 当前页
     const singerId = ref("");
     const singerName = ref("");
-    const toggle = ref(false); // 控制播放图标状态
+    const toggle = ref(false); // 控制播放图标位置，上还是下
     const BOFANG = ref(Icon.BOFANG);
     const ZANTING = ref(Icon.ZANTING);
     const breadcrumbList = computed(() => store.getters.breadcrumbList);
@@ -296,7 +296,7 @@ export default defineComponent({
             registerForm.singerName = "";
             registerForm.introduction = "";
             registerForm.lyric = "";
-           
+
           }
         }
       };

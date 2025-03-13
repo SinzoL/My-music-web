@@ -30,6 +30,7 @@ public class ConsumerServiceImpl extends ServiceImpl<ConsumerMapper, Consumer>
 
     @Autowired
     private ConsumerMapper consumerMapper;
+    private final String defaultAvatar = "/img/avatarImages/user.jpg";
 
 
     /**
@@ -52,7 +53,8 @@ public class ConsumerServiceImpl extends ServiceImpl<ConsumerMapper, Consumer>
         if ("".equals(consumer.getEmail())) {
             consumer.setEmail(null);
         }
-        consumer.setAvatar("/img/avatarImages/user.jpg");
+        //设置初始头像
+        consumer.setAvatar(defaultAvatar);
         try {
             QueryWrapper<Consumer> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("email",consumer.getEmail());

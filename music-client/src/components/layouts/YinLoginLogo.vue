@@ -26,7 +26,7 @@ export default defineComponent({
 @import "@/assets/css/global.scss";
 
 .login-logo {
-  background-color: $color-blue-light;
+  background-color: $color-green-light;
   height: calc(100vh - $header-height - $footer-height);
   min-width: 50vw;
   overflow: hidden;
