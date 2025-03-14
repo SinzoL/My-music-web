@@ -31,7 +31,7 @@ export default defineComponent({
         return;
       }
       const result = (await HttpManager.getSongOfSingerName(value)) as ResponseBody;
-      if (!result.data.length) {
+      if (!result.data || !result.data.length) {
         currentSongList.value = [];
         (proxy as any).$message({
           message: "暂时没有相关歌曲",
