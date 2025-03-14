@@ -16,4 +16,5 @@ export const enum Icon {
   Support = "#icon-zan", // 赞
   XUNHUAN = "#icon-xunhuan", // 循环
   LUANXU = "#icon-xunhuan1", // 乱序
+  MOON = "#icon-moon", // 月亮
 }

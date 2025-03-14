@@ -2,7 +2,7 @@
   <div class="yin-header">
     <!--图标-->
     <div class="header-logo" @click="goPage()">
-      <yin-icon :icon="iconList.ERJI"></yin-icon>
+      <yin-icon :icon="iconList.XIAZAI"></yin-icon>
       <span>{{ musicName }}</span>
     </div>
     <yin-header-nav class="yin-header-nav" :styleList="headerNavList" :activeName="activeNavName" @click="goPage"></yin-header-nav>
