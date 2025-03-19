@@ -44,6 +44,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .background {
+  position: fixed;
   width: 100%;
   height: 100vh;
 }
